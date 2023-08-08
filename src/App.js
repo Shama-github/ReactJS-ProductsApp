@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import {Routes,Route,Link, Router} from 'react-router-dom';
+import ProductForm from './ProductForm.js';
+import Home from './Home.js';
+import PageNotFound from './PageNotFound.js';
+import ProductDetails from './ProductDetails.js';
+import ProductDelete from './ProductDelete.js';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+       <div className="container"> &nbsp;&nbsp;
+      <span className="title">Welcome to Ecommerce App!</span> &nbsp;&nbsp;
+      </div>
+    <div>
+      <Routes>
+      <Route path="/addproduct" element={<ProductForm/>}/>
+      <Route path="/addproduct/:id" element={<ProductForm/>}/>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/home" element={<Home/>}/>
+      <Route path="/*" element={<PageNotFound/>}/>
+      <Route path="/productdetails/:id" element={<ProductDetails/>}/>
+      <Route path="/productdelete/:id" element={<ProductDelete/>}/>
+     </Routes>
+</div>
+</div>
   );
-}
+};
 
 export default App;
